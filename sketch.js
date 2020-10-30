@@ -1,49 +1,26 @@
-let bouncingBalls = [];
+let img;
+let canvas2;
 
+function preload() {
+  img = loadImage('paris/PARIS.jpg');
+  eiffel = loadImage ('paris/eiffel.jpg')
+  louvre = loadImage ('paris/louvre.jpg')
+  
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  for (i = 0; i < 2; i++) {
-    let x = random(width);
-    let y = random(50);
-    let dy = 0;
-    let dx = (1, -1, random(-20, 20), random(-1, 1), random(-20, 20));
-    let c = color(random (i,250), random (i,250), random (i,250));
-    bouncingBalls[i] = new Ball(x, y, dy, dx, c);
-  }
+
+  image(img, 0, 0);
+  imageMode(CENTER)
+
+  image (eiffel,368,257,eiffel.width/1.5,eiffel.height/1.5)
+  image (louvre, 1004,605, louvre.width/1.7, louvre.height/1.8)
+  imageMode(CENTER)
+
+
 }
 
-function draw() {
-  background(random (i,250), random (i,250), random (i,250));
-  for (let ball of bouncingBalls) {
-    ball.update();
-    ball.display();
-  }
-}
-
-class Ball {
-  constructor(x, y, dy, dx, c) {
-    this.x = x;
-    this.y = y;
-    this.dy = dy;
-    this.dx = dx;
-    this.color = c;
-  }
-  update() {
-    this.y += this.dy;
-    this.dy += 0.25;
-    this.x += this.dx;
-    if (this.y >= height && this.dy > 0) {
-      this.dy = -0.95 * this.dy;
-    }
-    if (this.x >= width || this.x <= 0) {
-      this.dx = -1 * this.dx;
-    }
-
-  }
-  display() {
-    fill(this.color);
-    circle(this.x, this.y, 50);
-    
-  }
+function mousePressed(){
+  console.info (mouseX, mouseY)
 }
